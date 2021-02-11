@@ -1,16 +1,20 @@
 #!/usr/bin/python3
 """ Module for storing the BaseModel class. """
-import json
 from models.base_model import BaseModel
+import json
 
 
 class FileStorage():
+    """
+    FileStorage class for handling serialization and deserialization of objects
+    on a JSON format, and managing the file.json for persistance over sessions.
+    """
     __file_path = 'file.json'
     __objects = {}
 
     # all | Public | method |-------------------------------------------------|
     def all(self):
-        return FileStorage.__objects
+        return self.__objects
 
     # new | Public | method |-------------------------------------------------|
     def new(self, obj):
@@ -21,22 +25,20 @@ class FileStorage():
     def save(self):
 
         dicto = {}
-        for key, obj in FileStorage.__objects.items():
+        for key, obj in self.__objects.items():
             dicto[key] = obj.to_dict()
 
-        with open(FileStorage.__file_path, "w") as f:
+        with open(self.__file_path, "w") as f:
             json.dump(dicto, f)
 
     # reload | Public | method |----------------------------------------------|
     def reload(self):
         try:
-            with open(FileStorage.__file_path, "r") as f:
-                FileStorage.__objects = json.loads(f.read())
+            with open(self.__file_path, "r") as f:
+                self.__objects = json.loads(f.read())
 
-                for obj_id in FileStorage.__objects.keys():
-                    FileStorage.__objects[obj_id] = eval
-                    (FileStorage.__objects[obj_id]['__class__'])
-                    (**FileStorage.__objects[obj_id])
+                for obj_id, obj in self.__objects.items():
+                    self.__objects[obj_id] = eval(obj['__class__'])(**obj)
 
         except FileNotFoundError:
             pass
