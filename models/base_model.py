@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ Module for storing the BaseModel class. """
 from datetime import datetime
-from models.engine.file_storage import FileStorage as storage
+import models
 from uuid import uuid4
 
 
@@ -12,7 +12,7 @@ class BaseModel():
     def __init__(self, *args, **kwargs):
         if kwargs:
             for key in kwargs.keys():
-                time='%Y-%m-%dT%H:%M:%S.%f'
+                time = '%Y-%m-%dT%H:%M:%S.%f'
                 if key == "__class__":
                     continue
                 else:
@@ -26,7 +26,7 @@ class BaseModel():
             self.id = str(uuid4())
             self.created_at = datetime.today()
             self.updated_at = self.created_at
-            storage.new(storage, self.to_dict())
+            models.storage.new(self)
 
     # __str__ | Private | method |-------------------------------------------|
     def __str__(self):
@@ -39,7 +39,8 @@ class BaseModel():
     # save | Public | method |-----------------------------------------------|
     def save(self):
         self.updated_at = datetime.today()
-        storage.save(self)
+        models.storage.save()
+        # models.storage.new(self)
 
     # to_dict | Public | method |--------------------------------------------|
     def to_dict(self):
