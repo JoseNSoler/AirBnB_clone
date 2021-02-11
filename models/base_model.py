@@ -7,7 +7,6 @@ from uuid import uuid4
 
 class BaseModel():
     """ BaseModel class, with unique uuid. """
-
     # __init__ | Private | method |-------------------------------------------|
     def __init__(self, *args, **kwargs):
         if kwargs:
@@ -28,7 +27,7 @@ class BaseModel():
             self.updated_at = self.created_at
             models.storage.new(self)
 
-    # __str__ | Private | method |-------------------------------------------|
+    # __str__ | Private | method |--------------------------------------------|
     def __str__(self):
         string = "[{}] ({}) <{}>".format(
             self.__class__.__name__,
@@ -36,13 +35,13 @@ class BaseModel():
             str(self.__dict__))
         return string
 
-    # save | Public | method |-----------------------------------------------|
+    # save | Public | method |------------------------------------------------|
     def save(self):
         self.updated_at = datetime.today()
         models.storage.save()
-        # models.storage.new(self)
+        # models.storage.new(self) Jhonsito????
 
-    # to_dict | Public | method |--------------------------------------------|
+    # to_dict | Public | method |---------------------------------------------|
     def to_dict(self):
 
         dicto = []
