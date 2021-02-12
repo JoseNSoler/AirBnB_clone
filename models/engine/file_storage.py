@@ -42,3 +42,19 @@ class FileStorage():
 
         except FileNotFoundError:
             pass
+
+    def delete(self, id=""):
+        """  """
+        string = "BaseModel." + id
+
+        switch = False
+
+        for obj_id, obj in self.__objects.items():
+            if string == obj_id:
+                self.__objects.pop(string)
+                self.save()
+                switch = True
+                return True
+
+        if switch == False:
+            return False
