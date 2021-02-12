@@ -36,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
         if line:
             args = line.split(" ")
             if args[0] == 'BaseModel':
-                if args[1]:
+                if len(args) > 1:
                     string = "BaseModel." + "{}".format(args[1])
                     models.storage.reload()
                     dicto = models.storage.all()
