@@ -43,6 +43,7 @@ class FileStorage():
         except FileNotFoundError:
             pass
 
+    # delete | Public | method |----------------------------------------------|
     def delete(self, id=""):
         """  """
         string = "BaseModel." + id
