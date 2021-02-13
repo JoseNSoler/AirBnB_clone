@@ -43,7 +43,6 @@ class BaseModel():
 
     # to_dict | Public | method |---------------------------------------------|
     def to_dict(self):
-
         dicto = []
         dicto_final = {}
 

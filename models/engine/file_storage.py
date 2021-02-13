@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Module for storing the BaseModel class. """
 from models.base_model import BaseModel
+from models.user import User
 import json
 
 
@@ -45,9 +46,8 @@ class FileStorage():
 
     # delete | Public | method |----------------------------------------------|
     def delete(self, id=""):
-        """  """
+        """ Deletes an instance currently stored. """
         string = "BaseModel." + id
-
         switch = False
 
         for obj_id, obj in self.__objects.items():
@@ -57,5 +57,15 @@ class FileStorage():
                 switch = True
                 return True
 
-        if switch == False:
+        if switch is False:
+            return False
+
+    # update | Public | method |----------------------------------------------|
+    def update(self, obj_id, key, value):
+        try:
+            if key != "updated_at" and key != "created_at" and key != "id":
+                setattr(self.__objects[obj_id], key, value)
+            self.save()
+            return True
+        except KeyError:
             return False
