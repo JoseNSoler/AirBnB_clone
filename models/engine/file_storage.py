@@ -19,8 +19,8 @@ class FileStorage():
 
     # new | Public | method |-------------------------------------------------|
     def new(self, obj):
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = obj
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)  # Classname.id
+        self.__objects[key] = obj  # Store Object
 
     # save | Public | method |------------------------------------------------|
     def save(self):
@@ -44,11 +44,11 @@ class FileStorage():
         except FileNotFoundError:
             pass
 
-    # delete | Public | method |----------------------------------------------|
-    def delete(self, id=""):
+    # delete | Public | method | Custom Built --------------------------------|
+    def delete(self, class_name="", class_id=""):
         """ Deletes an instance currently stored. """
-        string = "BaseModel." + id
         switch = False
+        string = class_name + "." + class_id
 
         for obj_id, obj in self.__objects.items():
             if string == obj_id:

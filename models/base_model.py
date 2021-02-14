@@ -39,19 +39,18 @@ class BaseModel():
     def save(self):
         self.updated_at = datetime.today()
         models.storage.save()
-        # models.storage.new(self) Jhonsito????
 
     # to_dict | Public | method |---------------------------------------------|
     def to_dict(self):
-        dicto = []
+        list_of_keys = []
         dicto_final = {}
 
-        for name in self.__dict__.keys():
-            if name[:1] != '_':
-                dicto.append(name)
-        dicto.append('__class__')
+        for name in dir(self):
+            if name[0] != '_' and name != "to_dict" and name != "save":
+                list_of_keys.append(name)
+        list_of_keys.append('__class__')
 
-        for name2 in dicto:
+        for name2 in list_of_keys:
             if name2 == "created_at":
                 dicto_final[name2] = self.created_at.isoformat("T")
             elif name2 == "updated_at":
@@ -59,6 +58,8 @@ class BaseModel():
             elif name2 == "__class__":
                 dicto_final[name2] = self.__class__.__name__
             else:
-                dicto_final[name2] = getattr(self, name2)
+                string = "self.{}".format(name2)
+
+                dicto_final[name2] = eval(string)
 
         return (dicto_final)

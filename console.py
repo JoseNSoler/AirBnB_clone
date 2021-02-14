@@ -90,7 +90,7 @@ class HBNBCommand(cmd.Cmd):
 
             if switch is True:
                 if len(args) > 1:
-                    if storage.delete(args[1]) is False:
+                    if storage.delete(args[0], args[1]) is False:
                         print("** no instance found **")
                 else:
                     print("** instance id missing **")
@@ -102,6 +102,7 @@ class HBNBCommand(cmd.Cmd):
     # do_all - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -|
     def do_all(self, line):
         """ Prints all the objects, currently present. """
+        storage.reload()
         dicto = storage.all()
         list_of_strings = []
 
@@ -152,6 +153,8 @@ usage:
     update <class name> <id> <attribute name> "<attribute value>"
         '''
         if line:
+            # Change single ' to double " for cmds running non-tty
+            line = line.replace("'", '"')
             # Split once delimited by "
             val = line.split('"')
             # Split normally a second time the first arguments
