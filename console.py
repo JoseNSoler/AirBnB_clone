@@ -537,7 +537,7 @@ class HBNBCommand(cmd.Cmd):
 
 # If being executed not imported - - - - - - - - - - - - - - - - - - - - - - -|
 if __name__ == '__main__':
-
+    '''name main'''
     import sys
     if len(sys.argv) > 1:
         HBNBCommand().onecmd(' '.join(sys.argv[1:]))

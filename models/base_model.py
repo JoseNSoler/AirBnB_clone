@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module for storing the BaseModel class. """
+""" Module for Base model"""
 from datetime import datetime
 import models
 from uuid import uuid4
@@ -28,15 +28,6 @@ class BaseModel():
             self.updated_at = self.created_at
             models.storage.new(self)
 
-    # __str__ | Private | method |--------------------------------------------|
-    def __str__(self):
-        """ Returns the string representation of the BaseModel object. """
-        string = "[{}] ({}) <{}>".format(
-            self.__class__.__name__,
-            self.id,
-            str(self.__dict__))
-        return string
-
     # save | Public | method |------------------------------------------------|
     def save(self):
         """ Sets the updated_at time for the current time """
@@ -45,7 +36,7 @@ class BaseModel():
 
     # to_dict | Public | method |---------------------------------------------|
     def to_dict(self):
-        """  """
+        """Returns a dict representation of object-instance"""
         list_of_attributes = []
         dicto_final = {}
 
@@ -85,5 +76,13 @@ class BaseModel():
                 # Uncomment two lines below to add default attributes as well.
                 # string = "self.{}".format(attribute)
                 # dicto_final[attribute] = eval(string)
-
         return (dicto_final)
+
+    # __str__ | Private | method |--------------------------------------------|
+    def __str__(self):
+        """ Returns the string representation of the BaseModel object. """
+        string = "[{}] ({}) <{}>".format(
+            self.__class__.__name__,
+            self.id,
+            str(self.__dict__))
+        return string

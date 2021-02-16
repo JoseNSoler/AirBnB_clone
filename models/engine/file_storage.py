@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module for storing the BaseModel class. """
+""" Module for storing and reload from JSON file"""
 from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.review import Review
@@ -20,18 +20,27 @@ class FileStorage():
 
     # all | Public | method |-------------------------------------------------|
     def all(self):
-        """"""
+        """Returns dict stored in __objects"""
         return self.__objects
 
     # new | Public | method |-------------------------------------------------|
     def new(self, obj):
-        """"""
+        '''
+        Creates a new instance of a object, and stores in public
+        __objects
+
+        Args:
+            obj: new instance object to create
+        '''
         key = "{}.{}".format(obj.__class__.__name__, obj.id)  # Classname.id
         self.__objects[key] = obj  # Store Object
 
     # save | Public | method |------------------------------------------------|
     def save(self):
-        """"""
+        """
+        Save content of our multi dict __objects, in JSON format
+        on a <file.json>
+        """
         dicto = {}
         for key, obj in self.__objects.items():
             dicto[key] = obj.to_dict()
@@ -41,7 +50,10 @@ class FileStorage():
 
     # reload | Public | method |----------------------------------------------|
     def reload(self):
-        """"""
+        """
+        Load JSON content of <file.json>, in multi dict format on
+        __objects
+        """
         try:
             with open(self.__file_path, "r") as f:
                 self.__objects = json.loads(f.read())
@@ -54,7 +66,7 @@ class FileStorage():
 
     # delete | Public | method | Custom made method --------------------------|
     def delete(self, class_name="", class_id=""):
-        """ Deletes an instance currently stored. """
+        """ Deletes an instance currently stored"""
         switch = False
         string = class_name + "." + class_id
 
@@ -70,6 +82,14 @@ class FileStorage():
 
     # update | Public | method | Custom made method --------------------------|
     def update(self, obj_id, key, value):
+        '''
+        Updates our multi dict __objects, with id of instance to modify
+
+        Args:
+            obj_id: instance id to modify
+            key: Attribute of instance
+            value: value of attribute
+        '''
         try:
             if key != "updated_at" and key != "created_at" and key != "id":
                 switch = True
