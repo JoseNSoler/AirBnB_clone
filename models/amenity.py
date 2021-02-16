@@ -6,5 +6,8 @@ from models.base_model import BaseModel
 class Amenity(BaseModel):
     """
     Amenity class with name.
+
+    Attributes:
+        name (str): name of the amenities provided
     """
     name = ""
