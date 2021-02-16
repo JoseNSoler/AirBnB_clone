@@ -529,7 +529,7 @@ class HBNBCommand(cmd.Cmd):
         """  \033[92m|\033[0m\n""" \
             """  \033[92m| -\033[0m Exits the program.\n""" \
             """  \033[92m|\033[0m"""
-        # print("")
+        print("")
         return True
 
     # do_EOF - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -|
@@ -537,16 +537,12 @@ class HBNBCommand(cmd.Cmd):
         """  \033[92m|\033[0m\n""" \
             """  \033[92m| -\033[0m Exits the program.\n""" \
             """  \033[92m|\033[0m"""
-        # print("")
+        print("")
         return True
 
 # If being executed not imported - - - - - - - - - - - - - - - - - - - - - - -|
 if __name__ == '__main__':
     '''name main'''
-    # import sys
-    # if len(sys.argv) > 1:
-    #     HBNBCommand().onecmd(' '.join(sys.argv[1:]))
-    # else:
     green = "\033[92m"  # <-- Green color format
     red = "\033[91m"  # <-- Red color format
     reset = "\033[0m"  # <-- Default color format
@@ -596,4 +592,4 @@ if __name__ == '__main__':
           "|_____________________________________________________|\n"
 
     # Start running the cmd loop
-    HBNBCommand().cmdloop()
+    HBNBCommand().cmdloop(air)
