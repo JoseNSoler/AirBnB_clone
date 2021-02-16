@@ -1,60 +1,47 @@
 #!/usr/bin/python3
-""" Module for storing the BaseModel class. """
-from datetime import datetime
-from datetime import strptime
-from uuid import uuid4
+""""""
+from models.base_model import BaseModel
+import uuid
+import unittest
 
 
-class BaseModel():
-    """ BaseModel class, with unique uuid. """
-    def __init__(self, *args, **kwargs):
-        if kwargs != None:
-            for key in kwargs.keys():
-                if key == "__class__":
-                    continue
-                else:
-                    if key == "created_at":
-                        self.key = strptime(kwargs[key].values(),
-                                            '%Y-%m-%dT%H:%M:%S.%f')
-                    elif key == "updated_at":
-                        self.key = strptime(kwargs[key].values(),
-                                            '%Y-%m-%dT%H:%M:%S.%f')
-                    else:
-                        self.key = setattr(self, key, kwargs[key].values())
+class TestBaseModel(unittest.TestCase):
+    """ """
+    def test_create_instance(self):
+        """ Tests for creation of basic BaseModel instances"""
 
-        else:
-            self.id = str(uuid4())
-            self.created_at = datetime.today()
-            self.updated_at = self.created_at
+        # Create BaseModel instance.
+        base = BaseModel()
+        base.name = "Holberton"
+        base.my_number = 50
 
-    def __str__(self):
-        string = "[{}] ({}) <{}>".format(
-            self.__class__.__name__,
-            self.id,
-            str(self.__dict__)
-        return string
+        # Test for proper type.
+        self.assertEqual(type(base), type(BaseModel()))
 
-    def save(self):
-        self.updated_at = datetime.today()
+        # Test for methods.
+        self.assertIn("save", dir(base))
+        self.assertIn("to_dict", dir(base))
 
-    def to_dict(self):
+        # Test if the instance has initial attributes.
+        self.assertTrue(hasattr(base, "id"))
+        self.assertTrue(hasattr(base, "created_at"))
+        self.assertTrue(hasattr(base, "updated_at"))
 
-        dicto = []
-        dicto_final = {}
+        # Test for proper return of to_dict()
+        self.assertEqual(type(base.to_dict()), type({}))
+        self.assertIn("id", base.to_dict())
+        self.assertIn("created_at", base.to_dict())
+        self.assertIn("updated_at", base.to_dict())
+        self.assertIn("name", base.to_dict())
+        self.assertIn("my_number", base.to_dict())
 
-        for name in self.__dict__.keys():
-            if name[:1] != '_':
-                dicto.append(name)
-        dicto.append('__class__')
+        # Test for properly setting a name attribute.
+        self.assertEqual(base.name, "Holberton")
+        self.assertEqual(base.my_number, 50)
 
-        for name2 in dicto:
-            if name2 == "created_at":
-                dicto_final[name2] = self.created_at.isoformat("T")
-            elif name2 == "updated_at":
-                dicto_final[name2] = self.updated_at.isoformat("T")
-            elif name2 == "__class__":
-                dicto_final[name2] = self.__class__.__name__
-            else:
-                dicto_final[name2] = getattr(self, name2)
+        # Test if the type of the id is correct.
+        version = uuid.UUID(base.id).version
+        self.assertEqual(version, 4)
 
-        return (dicto_final)
+if __name__ == '__main__':
+    unittest.main()
