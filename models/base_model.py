@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-""" Module for Base model"""
+""" Module for storing the BaseModel class. """
 from datetime import datetime
 import models
 from uuid import uuid4
 
 
 class BaseModel():
-    """ BaseModel class, with unique uuid. """
+    """ BaseModel class for handling base attributes."""
     # __init__ | Private | method |-------------------------------------------|
     def __init__(self, *args, **kwargs):
         """ Initializtion for the BaseModel class object. """
@@ -81,7 +81,7 @@ class BaseModel():
     # __str__ | Private | method |--------------------------------------------|
     def __str__(self):
         """ Returns the string representation of the BaseModel object. """
-        string = "[{}] ({}) <{}>".format(
+        string = "[{}] ({}) {}".format(
             self.__class__.__name__,
             self.id,
             str(self.__dict__))
