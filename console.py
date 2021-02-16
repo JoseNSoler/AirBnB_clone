@@ -529,7 +529,7 @@ class HBNBCommand(cmd.Cmd):
         """  \033[92m|\033[0m\n""" \
             """  \033[92m| -\033[0m Exits the program.\n""" \
             """  \033[92m|\033[0m"""
-        print("")
+        # print("")
         return True
 
     # do_EOF - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -|
@@ -537,63 +537,63 @@ class HBNBCommand(cmd.Cmd):
         """  \033[92m|\033[0m\n""" \
             """  \033[92m| -\033[0m Exits the program.\n""" \
             """  \033[92m|\033[0m"""
-        print("")
+        # print("")
         return True
 
 # If being executed not imported - - - - - - - - - - - - - - - - - - - - - - -|
 if __name__ == '__main__':
     '''name main'''
-    import sys
-    if len(sys.argv) > 1:
-        HBNBCommand().onecmd(' '.join(sys.argv[1:]))
-    else:
-        green = "\033[92m"  # <-- Green color format
-        red = "\033[91m"  # <-- Red color format
-        reset = "\033[0m"  # <-- Default color format
+    # import sys
+    # if len(sys.argv) > 1:
+    #     HBNBCommand().onecmd(' '.join(sys.argv[1:]))
+    # else:
+    green = "\033[92m"  # <-- Green color format
+    red = "\033[91m"  # <-- Red color format
+    reset = "\033[0m"  # <-- Default color format
 
-        # Green help string
-        hlp = green + "help" + reset
+    # Green help string
+    hlp = green + "help" + reset
 
-        # Green quit string
-        qut = green + "quit" + reset
+    # Green quit string
+    qut = green + "quit" + reset
 
-        # Green title message
-        title_string = green + "Welcome to the hbnb C.L.I" + reset
+    # Green title message
+    title_string = green + "Welcome to the hbnb C.L.I" + reset
 
-        # Regular intro.
-        intro_string = "._______________________________.\n" \
-                       "|                               |\n" \
-                       "|   " + title_string + "   |\n" \
-                       "|                               |\n" \
-                       "|     for help, type '" + hlp + "'     |\n" \
-                       "|      to quit, type '" + qut + "'     |\n" \
-                       "|_______________________________|\n"
+    # Regular intro.
+    intro_string = "._______________________________.\n" \
+                   "|                               |\n" \
+                   "|   " + title_string + "   |\n" \
+                   "|                               |\n" \
+                   "|     for help, type '" + hlp + "'     |\n" \
+                   "|      to quit, type '" + qut + "'     |\n" \
+                   "|_______________________________|\n"
 
-        # Pretty intro.
-        air = "._____________________________________________________.\n" \
-              "|                                                     |\n" \
-              "|             \033[92m\033[4m " \
-              "Welcome to the hbnb C.L.I \033[0m             |\n" \
-              "|\033[92m\033[5m" \
-              "    ______  __  ______  ______  __   __  ______" \
-              "\033[0m      |\n" \
-              "|\033[92m\033[5m" \
-              "   /\  __ \/\ \/\  == \/\  == \/\ \"-.\ \/\  == \ " \
-              "\033[0m    |\n" \
-              "|\033[92m\033[5m" \
-              "   \ \  __ \ \ \ \  __<\ \  __<\ \ \-.  \ \  __<" \
-              "\033[0m     |\n" \
-              "|\033[92m\033[5m" \
-              "    \ \_\ \_\ \_\ \_\ \_\ \_____\ \_\\\\\"\_\ \_____\ " \
-              "\033[0m  |\n" \
-              "|\033[92m\033[5m" \
-              "     \/_/\/_/\/_/\/_/ /_/\/_____/\/_/ \/_/\/_____/" \
-              "\033[0m   |\n" \
-              "|                                                     |\n" \
-              "|                for help, type '" + hlp + "'                " \
-              "|\n|                 to quit, type '" + qut + "'             " \
-              "   |\n" \
-              "|_____________________________________________________|\n"
+    # Pretty intro.
+    air = "._____________________________________________________.\n" \
+          "|                                                     |\n" \
+          "|             \033[92m\033[4m " \
+          "Welcome to the hbnb C.L.I \033[0m             |\n" \
+          "|\033[92m\033[5m" \
+          "    ______  __  ______  ______  __   __  ______" \
+          "\033[0m      |\n" \
+          "|\033[92m\033[5m" \
+          "   /\  __ \/\ \/\  == \/\  == \/\ \"-.\ \/\  == \ " \
+          "\033[0m    |\n" \
+          "|\033[92m\033[5m" \
+          "   \ \  __ \ \ \ \  __<\ \  __<\ \ \-.  \ \  __<" \
+          "\033[0m     |\n" \
+          "|\033[92m\033[5m" \
+          "    \ \_\ \_\ \_\ \_\ \_\ \_____\ \_\\\\\"\_\ \_____\ " \
+          "\033[0m  |\n" \
+          "|\033[92m\033[5m" \
+          "     \/_/\/_/\/_/\/_/ /_/\/_____/\/_/ \/_/\/_____/" \
+          "\033[0m   |\n" \
+          "|                                                     |\n" \
+          "|                for help, type '" + hlp + "'                " \
+          "|\n|                 to quit, type '" + qut + "'             " \
+          "   |\n" \
+          "|_____________________________________________________|\n"
 
-        # Start running the cmd loop
-        HBNBCommand().cmdloop()
+    # Start running the cmd loop
+    HBNBCommand().cmdloop()
