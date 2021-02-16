@@ -21,7 +21,7 @@
 |______________________________________________________________|\n
 """
 from models.base_model import BaseModel
-from models.__init__ import storage
+from models import storage
 from models.amenity import Amenity
 from models.review import Review
 from models.place import Place
@@ -398,14 +398,19 @@ class HBNBCommand(cmd.Cmd):
                 arg = line.split(" ")
                 # Remove the , characters
                 arg[0] = arg[0].strip(",")
-                arg[1] = arg[1].strip(",")
-                arg[2] = arg[2].strip(",")
+                if len(arg) > 1:
+                    arg[1] = arg[1].strip(",")
+                if len(arg) > 2:
+                    arg[2] = arg[2].strip(",")
                 # Remove the " characters
                 arg[0] = arg[0].strip('"')
-                arg[1] = arg[1].strip('"')
-                arg[2] = arg[2].strip('"')
-                ending = '{}"'.format(arg[3])
-                line = arg[0] + " " + arg[1] + " " + arg[2] + ' "' + ending
+                if len(arg) > 1:
+                    arg[1] = arg[1].strip('"')
+                if len(arg) > 2:
+                    arg[2] = arg[2].strip('"')
+                if len(arg) > 3:
+                    ending = '{}"'.format(arg[3])
+                    line = arg[0] + " " + arg[1] + " " + arg[2] + ' "' + ending
 
             if line.count("{"):
                 line = None
@@ -591,4 +596,4 @@ if __name__ == '__main__':
               "|_____________________________________________________|\n"
 
         # Start running the cmd loop
-        HBNBCommand().cmdloop(air)
+        HBNBCommand().cmdloop()
