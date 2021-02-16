@@ -18,6 +18,34 @@ Powerful and easy to use.
 </p>
 
 
+Python format for folder hierarchy
+----------------------------------
+
+```Python
+AirBnB
+├── models
+│   ├── engine
+│   │   └── file_storage.py
+│   │
+│   ├── amenity.py
+│   ├── base_model.py
+│   ├── city.py
+│   ├── place.py
+│   ├── review.py
+│   ├── state.py
+│   └── user.py
+│
+├── tests
+│   ├── test_models
+│   │   ├── test engine 
+│   │   │   └── test_file_storage.py
+│   │   │
+│   │   └── test_base_model.py
+│   │
+│   └── test_console.py
+│
+└── console.py
+```
 
 
 
