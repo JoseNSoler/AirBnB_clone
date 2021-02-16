@@ -529,7 +529,7 @@ class HBNBCommand(cmd.Cmd):
         """  \033[92m|\033[0m\n""" \
             """  \033[92m| -\033[0m Exits the program.\n""" \
             """  \033[92m|\033[0m"""
-        # print("")
+        print("")
         return True
 
     # do_EOF - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -|
