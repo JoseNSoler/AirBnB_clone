@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Module for storing the tests for BaseModel instances. """
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 import models
 import uuid
@@ -8,12 +9,12 @@ import os
 
 
 class TestFileStorage(unittest.TestCase):
-    """
+    '''
     TestCase class for testing the FileStorage instances and the storage
     variable.
-    """
+    '''
     def setUp(self):
-        """ Setup for erasing file.json when starting every test. """
+        ''' Setup for erasing file.json when starting every test. '''
         # Get Current Working Directory.
         cwd = os.getcwd()
         # Concat. the cwd to the name of the .json file
@@ -24,14 +25,43 @@ class TestFileStorage(unittest.TestCase):
         # Except it is not there.
         except Exception as e:
             pass
+        # Reset dictionary of storage.
+        models.storage._FileStorage__objects = {}
 
     def test_file_storage(self):
-        """ Tests for the creation of FileStorage classes. """
+        ''' Tests for the creation of FileStorage classes. '''
+        # Test type of FileStorage.
+        self.assertEqual(type(models.storage), type(FileStorage()))
+
+        # Test private attributes.
+        self.assertTrue(hasattr(models.storage, "_FileStorage__objects"))
+        self.assertTrue(hasattr(models.storage, "_FileStorage__file_path"))
+
         # Get empty dictionary as there is no .json file.
-        models.storage.reload()
         no_dicto = models.storage.all()
+
         # Test for the empty dictionary.
-        self.assertTrue(bool(no_dicto))
+        self.assertFalse(bool(no_dicto))
+
+    def test_FileStorage_no_args(self):
+        ''' Tests for creation of basic BaseModel instances'''
+        # Create BaseModel instance.
+        self.assertEqual(type(FileStorage()), FileStorage)
+
+    def test_JSON_file(self):
+        ''' Tests for the file.json. '''
+        base = BaseModel()
+        base.save()
+        pwd = os.getcwd()
+        path = pwd + "/file.json"
+        self.assertTrue(os.path.exists(path))
+
+    def test_all(self):
+        '''Test all callback dict '''
+        new = BaseModel()
+        tempo_dict = models.storage.all()
+        self.assertIsInstance(tempo_dict, dict)
+
 
 if __name__ == '__main__':
     unittest.main()
