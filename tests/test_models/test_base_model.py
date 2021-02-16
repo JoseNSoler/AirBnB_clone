@@ -6,7 +6,7 @@ import unittest
 
 
 class TestBaseModel(unittest.TestCase):
-    """ """
+    """Test principal for unittest"""
     def test_create_instance(self):
         """ Tests for creation of basic BaseModel instances"""
 
