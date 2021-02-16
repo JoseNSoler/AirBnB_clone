@@ -25,10 +25,6 @@ class TestFileStorage(unittest.TestCase):
         except Exception as e:
             pass
 
-    # def test_storage_variable(self):
-    #     """ Test """
-    #     self.assertTrue(hasattr(models.storage, ""))
-
     def test_file_storage(self):
         """ Tests for the creation of FileStorage classes. """
         # Get empty dictionary as there is no .json file.
@@ -36,9 +32,6 @@ class TestFileStorage(unittest.TestCase):
         no_dicto = models.storage.all()
         # Test for the empty dictionary.
         self.assertTrue(bool(no_dicto))
-
-
-
 
 if __name__ == '__main__':
     unittest.main()
