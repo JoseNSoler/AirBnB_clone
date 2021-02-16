@@ -592,4 +592,4 @@ if __name__ == '__main__':
           "|_____________________________________________________|\n"
 
     # Start running the cmd loop
-    HBNBCommand().cmdloop(air)
+    HBNBCommand().cmdloop()
