@@ -1,23 +1,16 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
-""""""
-=======
 """Module /tests/module_test -- BaseModel"""
->>>>>>> 7cc0fb5acdbedaa1b27b464623285ff6f7e51f04
+
 from models.base_model import BaseModel
 import uuid
 import unittest
 
 
 class TestBaseModel(unittest.TestCase):
-<<<<<<< HEAD
-    """ """
-=======
     """Test principal for unittest"""
->>>>>>> 7cc0fb5acdbedaa1b27b464623285ff6f7e51f04
+
     def test_create_instance(self):
         """ Tests for creation of basic BaseModel instances"""
-
         # Create BaseModel instance.
         base = BaseModel()
         base.name = "Holberton"
