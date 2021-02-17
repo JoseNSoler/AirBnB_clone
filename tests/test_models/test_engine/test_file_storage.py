@@ -2,6 +2,11 @@
 """ Module for storing the tests for BaseModel instances. """
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.review import Review
+from models.place import Place
+from models.state import State
+from models.city import City
 from models.user import User
 import models
 import uuid
@@ -72,14 +77,17 @@ class TestFileStorage(unittest.TestCase):
     def test_new(self):
         '''test new instance in objects'''
 
+        # Create BaseModel instance.
         base_x = BaseModel()
+
         with self.assertRaises(TypeError):
             models.storage.new(base_x, 1)
         tempo_dict = models.storage.all()
 
+        # Concatenate ClassName.id string
         base_x_id = "BaseModel" + "." + base_x.id
 
-
+        # Set attributes.
         user_x = User()
         user_x.email = "pruebas@prueba.com"
         user_x.first_name = "Don"
@@ -96,19 +104,44 @@ class TestFileStorage(unittest.TestCase):
                 self.assertTrue(hasattr(user_x, "password"))
                 self.assertTrue(hasattr(user_x, "id"))
 
-
         self.assertIn(base_x_id, tempo_dict.keys())
 
         self.assertIn(user_x_id, tempo_dict.keys())
 
-    
         models.storage.save()
         #Test file created after new
         pwd = os.getcwd()
         path = pwd + "/file.json"
         self.assertTrue(os.path.exists(path))
 
-        
+    def test_reload(self):
+        """ Test fors the reload() method. """
+
+        # Create test instances.
+        bas = BaseModel()
+        ame = Amenity()
+        rev = Review()
+        pla = Place()
+        sta = State()
+        usr = User()
+        cit = City()
+
+        # Create list of objects.
+        list_objs = [bas, ame, rev, pla, sta, usr, cit]
+
+        list_obj_id = []
+        for obj in list_objs:
+            list_obj_id.append(obj.__class__.__name__ + "." + obj.id)
+
+        # Save objects into file.
+        models.storage.save()
+
+        # Start test for reload.
+        models.storage.reload()
+
+
+        for obj_id in list_obj_id:
+            self.assertIn(obj_id, models.storage.all().keys())
 
 if __name__ == '__main__':
     unittest.main()
