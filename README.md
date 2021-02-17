@@ -97,10 +97,6 @@ EOF  all  count  create  destroy  help  quit  show  update
 $
 ```
 
-## Console Commands
-
-
-
 ## Base and objectsd properties 
 
 |             	| Public Instance Attributes 	| Public Instance Methods                 	| Public Class Attributes                                                                                                	| Private Class Attributes 	|
@@ -114,6 +110,45 @@ $
 | Place       	|```Inherits from BaseModel```    	|                                         	|```city_id user_id name description number_rooms number_bathrooms max_guest price_by_night latitude longitude amenity_ids``` 	|                          	|
 | Review      	|```Inherits from BaseModel```    	|                                         	|```place_id user_id text ```                                                                                                 	|     ""                       	|
 
+
+## Console Commands
+
+Following the table, this could be a posible time-line execution demonstrating the use of the console
+
+The principle execution file has already all permission needed, with a simple execution in linux environment "./<filename>", the console will start
+```
+hbnb@ubuntu:~/AirBnB$ ./console.py
+```
+
+If is the first time you run the console, you will probably don't see any content in <file.json>, or even the existing of this file
+
+**all**: Prints all string representation of all instances based or not on the class name. ie: "$ all BaseModel" or "$ all"
+```
+(hbnb) all MyModel
+** class doesn't exist **
+```
+
+**show**: Prints the string representation of an instance based on the class name and id "$ show BaseModel 1234-1234-1234"
+```
+(hbnb) show BaseModel
+** class doesn't exist **
+```
+
+**create**:
+Creates a new base <BaseModel>, or any kind of his instances: <City>, <Amenity>, <Place>, <Review>, <State>, <User> And prints on screen his unique id (uuid4) for a future reffer ; and at the same time, creates a file <file.json> where we could store, manage and save all instances created in the process. ie: "$ create BaseModel"
+
+```
+(hbnb) create BaseModel
+49faff9a-6318-451f-87b6-910505c5590
+______________________________________
+(hbnb) all BaseModel
+["[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'id': '49faff9a-6318-451f-87b6-910505c55907', 'updated_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903300)}"]
+______________________________________
+(hbnb) show BaseModel 49faff9a-6318-451f-87b6-910505c55907
+[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'id': '49faff9a-6318-451f-87b6-910505c55907', 'updated_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903300)}
+```
+
+**destroy**: destroys an object by his unique id, stored in <file.json> 
 
 
 ## Maintainers
