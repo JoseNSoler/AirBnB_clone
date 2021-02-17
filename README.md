@@ -135,7 +135,7 @@ If is the first time you run the console, you will probably don't see any conten
 ```
 
 **create**:
-Creates a new base <BaseModel>, or any kind of his instances: <City>, <Amenity>, <Place>, <Review>, <State>, <User> And prints on screen his unique id (uuid4) for a future reffer ; and at the same time, creates a file <file.json> where we could store, manage and save all instances created in the process. ie: "$ create BaseModel"
+Creates a new base *BaseModel*, or any kind of his instances: *City*, *Amenity*, *Place*, *Review*, *State*, *User* And prints on screen his unique id (uuid4) for a future reffer ; and at the same time, creates a file <file.json> where we could store, manage and save all instances created in the process. ie: "$ create BaseModel"
 
 ```
 (hbnb) create BaseModel
@@ -148,7 +148,23 @@ ______________________________________
 [BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'id': '49faff9a-6318-451f-87b6-910505c55907', 'updated_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903300)}
 ```
 
-**destroy**: destroys an object by his unique id, stored in <file.json> 
+**update**: Updates an instance based on the class name and id by adding or updating attribute (save the change into the <file.json>). ie: "$ update BaseModel 1234-1234-1234 email "aibnb@holbertonschool.com"
+
+```
+(hbnb) update BaseModel 49faff9a-6318-451f-87b6-910505c55907 first_name "Betty"
+______________________________________
+(hbnb) show BaseModel 49faff9a-6318-451f-87b6-910505c55907
+[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'first_name': 'Betty', 'id': '49faff9a-6318-451f-87b6-910505c55907', 'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 3, 49401)}
+```
+
+**destroy**: destroys an object by his unique id, stored in <file.json>. ie: "$ destroy BaseModel 1234-1234-1234"
+
+```
+(hbnb) destroy BaseModel 49faff9a-6318-451f-87b6-910505c55907
+______________________________________
+(hbnb) show BaseModel 49faff9a-6318-451f-87b6-910505c55907
+** no instance found **
+```
 
 
 ## Maintainers
@@ -161,6 +177,13 @@ ______________________________________
 
 This project exists thanks to all the people who contribute. 
 <a href="https://github.com/DiegoCol93/AirBnB_clone/graphs/contributors"><img src="https://i.ibb.co/Km8RXWP/Selection-042.png" /></a>
+
+
+
+
+<h1 align="center">
+   <img src="https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210216%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210216T203255Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=6039724420d1de1da1b5d6a9f0b8a01a4f94b47946cdc750dc608c5454213028" alt="AirBnb Holberton Console Image" title="AirBnB Console Holberton By JoseNSoler and Diego Lopez" />
+</h1>
 
 
 ## License
