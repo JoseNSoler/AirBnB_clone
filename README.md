@@ -104,14 +104,14 @@ $
 
 |             	| Public Instance Attributes 	| Public Instance Methods                 	| Public Class Attributes                                                                                                	| Private Class Attributes 	|
 |-------------	|----------------------------	|-----------------------------------------	|------------------------------------------------------------------------------------------------------------------------	|--------------------------	|
-| BaseModel   	| id created_at updated_at   	| save to_dict                            	|                                                                                                                        	|                          	|
-| FileStorage 	|                            	| all new save reload (n)delete (n)update 	|                                                                                                                        	| __file_path __objects    	|
-| User        	| Inherits from BaseModel    	|                                         	| email password first_name last_name                                                                                    	|                          	|
-| State       	| Inherits from BaseModel    	|                                         	| name                                                                                                                   	|                          	|
-| City        	| Inherits from BaseModel    	|                                         	| state_id name                                                                                                          	|                          	|
-| Amenity     	| Inherits from BaseModel    	|                                         	| name                                                                                                                   	|                          	|
-| Place       	| Inherits from BaseModel    	|                                         	| city_id user_id name description number_rooms number_bathrooms max_guest price_by_night latitude longitude amenity_ids 	|                          	|
-| Review      	| Inherits from BaseModel    	|                                         	| place_id user_id text                                                                                                  	|                          	|
+| BaseModel   	| ```id created_at updated_at ```  	|``` save to_dict```                            	|                                                                                                                        	|                          	|
+| FileStorage 	|                            	| ```all new save reload (n)delete (n)update ```	|                                                                                                                        	| ```__file_path __objects ```   	|
+| User        	| ```Inherits from BaseModel ```   	|                                         	| ```email password first_name last_name ```                                                                                   	|                          	|
+| State       	| ```Inherits from BaseModel ```   	|                                         	| ```name                                                                                                                 ```  	|                          	|
+| City        	| ```Inherits from BaseModel```    	|                                         	| ```state_id name```                                                                                                          	|                          	|
+| Amenity     	| ```Inherits from BaseModel```    	|                                         	| ```name ```                                                                                                                  	|                          	|
+| Place       	| ```Inherits from BaseModel```    	|                                         	| ```city_id user_id name description number_rooms number_bathrooms max_guest price_by_night latitude longitude amenity_ids``` 	|                          	|
+| Review      	| ```Inherits from BaseModel```    	|                                         	| ```place_id user_id text ```                                                                                                 	|     ""                       	|
 
 
 
