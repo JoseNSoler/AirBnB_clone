@@ -178,12 +178,9 @@ ______________________________________
 This project exists thanks to all the people who contribute. 
 <a href="https://github.com/DiegoCol93/AirBnB_clone/graphs/contributors"><img src="https://i.ibb.co/Km8RXWP/Selection-042.png" /></a>
 
-alt=""
-
-
 
 <h1 align="center">
-   <img src="https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210216%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210216T203255Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=6039724420d1de1da1b5d6a9f0b8a01a4f94b47946cdc750dc608c5454213028" alt="https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20210216%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210216T203255Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=6039724420d1de1da1b5d6a9f0b8a01a4f94b47946cdc750dc608c5454213028" title="AirBnB Console Holberton By JoseNSoler and Diego Lopez" />
+   <img src="https://i.ibb.co/rcCGSFn/65f4a1dd9c51265f49d0.png" alt="AirBnb console Holberton" title="AirBnB Console Holberton By JoseNSoler and Diego Lopez" />
 </h1>
 
 
