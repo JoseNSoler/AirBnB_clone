@@ -223,6 +223,7 @@ class TestFileStorage02(unittest.TestCase):
         """Checks if correct error Rises."""
         self.assertRaises(FileNotFoundError, storage.reload())
 
+<<<<<<< HEAD
     def test_14(self):
         """Checks if correct error Rises."""
         with self.assertRaises(TypeError):
@@ -295,3 +296,68 @@ class TestFileStorage02(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+=======
+        # Start test for reload.
+        models.storage.reload()
+        for obj_id in list_obj_id:
+            self.assertIn(obj_id, models.storage.all().keys())
+
+        # saves instances
+        try:
+            bas.save()
+        except:
+            print("error")
+
+    def test_save(self):
+        '''Check for save'''
+
+        # Create test instances.
+        bas = BaseModel()
+        ame = Amenity()
+        rev = Review()
+        pla = Place()
+        sta = State()
+        usr = User()
+        cit = City()
+
+        base2 = BaseModel(id="123")
+
+        models.storage.new(base2)
+        # Create list of objects.
+        list_objs = [bas, ame, rev, pla, sta, usr, cit]
+
+        # Make use of method new to create all instances
+        for obj in list_objs:
+            models.storage.new(obj)
+
+        list_obj_id = []
+        for obj in list_objs:
+            list_obj_id.append(obj.__class__.__name__ + "." + obj.id)
+
+        # Save objects into file.
+        models.storage.save()
+
+    def test_instantiation_with_kwargs(self):
+        '''Check instance BaseModel with kwargs '''
+        date = datetime.today()
+        date_iso = date.isoformat()
+        base = BaseModel(id="123", created_at=date_iso, updated_at=date_iso)
+        self.assertEqual(base.id, "123")
+        self.assertEqual(base.created_at, date)
+        self.assertEqual(base.updated_at, date)
+        base.save()
+
+
+    def test_save(self):
+        base = BaseModel()
+        BaseModel.save(base)
+
+        pwd = os.getcwd()
+        path = pwd + "/file.json"
+        self.assertTrue(os.path.exists(path))
+
+        models.storage.save()
+
+if __name__ == '__main__':
+    unittest.main()
+>>>>>>> e65a060210cc78d77b375bf3288cba05ead0dba0
