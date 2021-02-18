@@ -91,6 +91,7 @@ class TestBaseModel(unittest.TestCase):
             self.assertIn(string_base__class__, file_string)
             self.assertIn(string_base_created, file_string)
             self.assertIn(string_base_updated, file_string)
+
     def test_to_dict(self):
         #check to_dict returns value
         self.assertTrue(dict, type(BaseModel().to_dict()))
@@ -108,6 +109,19 @@ class TestBaseModel(unittest.TestCase):
         base.my_number = 50
         self.assertEqual("Holberton", base.name)
         self.assertIn("my_number", base.to_dict())
+    
+    def test_str_return(self):
+        '''Check returns of his __str__ '''
+        date = datetime.today()
+        date_repr = repr(date)
+        base = BaseModel()
+        base.id = "123456"
+        base.created_at = base.updated_at = date
+        bmstr = base.__str__()
+        self.assertIn("[BaseModel] (123456)", bmstr)
+        self.assertIn("'id': '123456'", bmstr)
+        self.assertIn("'created_at': " + date_repr, bmstr)
+        self.assertIn("'updated_at': " + date_repr, bmstr)
 
 if __name__ == '__main__':
     unittest.main()
