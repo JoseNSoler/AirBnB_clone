@@ -127,6 +127,9 @@ class TestFileStorage(unittest.TestCase):
         usr = User()
         cit = City()
 
+        base2 = BaseModel(id="123")
+
+        models.storage.new(base2)
         # Create list of objects.
         list_objs = [bas, ame, rev, pla, sta, usr, cit]
 
