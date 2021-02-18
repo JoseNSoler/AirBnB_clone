@@ -138,10 +138,18 @@ class TestFileStorage(unittest.TestCase):
 
         # Start test for reload.
         models.storage.reload()
-
-
         for obj_id in list_obj_id:
             self.assertIn(obj_id, models.storage.all().keys())
+
+    def test_save(self):
+        base = BaseModel()
+        BaseModel.save(base)
+
+        pwd = os.getcwd()
+        path = pwd + "/file.json"
+        self.assertTrue(os.path.exists(path))
+
+        models.storage.save()
 
 if __name__ == '__main__':
     unittest.main()
