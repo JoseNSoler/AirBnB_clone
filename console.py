@@ -21,8 +21,8 @@
 |______________________________________________________________|\n
 """
 from models.base_model import BaseModel
-from models.__init__ import storage
-# from models import storage
+# from models.__init__ import storage
+from models import storage
 from models.amenity import Amenity
 from models.review import Review
 from models.place import Place
