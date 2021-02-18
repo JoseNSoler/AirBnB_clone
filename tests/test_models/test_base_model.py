@@ -91,6 +91,23 @@ class TestBaseModel(unittest.TestCase):
             self.assertIn(string_base__class__, file_string)
             self.assertIn(string_base_created, file_string)
             self.assertIn(string_base_updated, file_string)
+    def test_to_dict(self):
+        #check to_dict returns value
+        self.assertTrue(dict, type(BaseModel().to_dict()))
+
+        #Check for attributes present on return of to_dict
+        base = BaseModel()
+        self.assertIn("id", base.to_dict())
+        self.assertIn("created_at", base.to_dict())
+        self.assertIn("updated_at", base.to_dict())
+        self.assertIn("__class__", base.to_dict())
+
+        #Check for update in to_dict class
+        base = BaseModel()
+        base.name = "Holberton"
+        base.my_number = 50
+        self.assertEqual("Holberton", base.name)
+        self.assertIn("my_number", base.to_dict())
 
 if __name__ == '__main__':
     unittest.main()
