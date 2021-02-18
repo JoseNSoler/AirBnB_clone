@@ -8,6 +8,7 @@ from models.place import Place
 from models.state import State
 from models.city import City
 from models.user import User
+from datetime import datetime
 import models
 import uuid
 import unittest
@@ -129,6 +130,10 @@ class TestFileStorage(unittest.TestCase):
         # Create list of objects.
         list_objs = [bas, ame, rev, pla, sta, usr, cit]
 
+        # Make use of method new to create all instances
+        for obj in list_objs:
+            models.storage.new(obj)
+
         list_obj_id = []
         for obj in list_objs:
             list_obj_id.append(obj.__class__.__name__ + "." + obj.id)
@@ -139,9 +144,27 @@ class TestFileStorage(unittest.TestCase):
         # Start test for reload.
         models.storage.reload()
 
+        for obj_id in list_obj_id:
+            self.assertIn(obj_id, models.storage.all().keys())
 
         for obj_id in list_obj_id:
             self.assertIn(obj_id, models.storage.all().keys())
+        #saves instances
+        try:
+            bas.save()
+        except:
+            print("error")
+
+    def test_instantiation_with_kwargs(self):
+        '''Check instance BaseModel with kwargs '''
+        date = datetime.today()
+        date_iso = date.isoformat()
+        base = BaseModel(id="123", created_at=date_iso, updated_at=date_iso)
+        self.assertEqual(base.id, "123")
+        self.assertEqual(base.created_at, date)
+        self.assertEqual(base.updated_at, date)
+        base.save()
+
 
 if __name__ == '__main__':
     unittest.main()
