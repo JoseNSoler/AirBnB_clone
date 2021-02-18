@@ -11,7 +11,6 @@ import os
 
 class TestBaseModel(unittest.TestCase):
     ''' Test for BaseModel class instances. '''
-
     def setUp(self):
         ''' Setup for erasing file.json when starting every test. '''
         # Get Current Working Directory.
@@ -93,23 +92,23 @@ class TestBaseModel(unittest.TestCase):
             self.assertIn(string_base_updated, file_string)
 
     def test_to_dict(self):
-        #check to_dict returns value
+        # Check to_dict returns value
         self.assertTrue(dict, type(BaseModel().to_dict()))
 
-        #Check for attributes present on return of to_dict
+        # Check for attributes present on return of to_dict
         base = BaseModel()
         self.assertIn("id", base.to_dict())
         self.assertIn("created_at", base.to_dict())
         self.assertIn("updated_at", base.to_dict())
         self.assertIn("__class__", base.to_dict())
 
-        #Check for update in to_dict class
+        # Check for update in to_dict class
         base = BaseModel()
         base.name = "Holberton"
         base.my_number = 50
         self.assertEqual("Holberton", base.name)
         self.assertIn("my_number", base.to_dict())
-    
+
     def test_str_return(self):
         '''Check returns of his __str__ '''
         date = datetime.today()
