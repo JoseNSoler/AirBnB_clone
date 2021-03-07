@@ -54,11 +54,12 @@
     background-color: #fafafa;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    display: block;
+    display: none;
     position: absolute; 
     width: 25%;
     margin-top: 3.5px;
     margin-left: -1px;
+    z-index: 1;
 }
 
 
